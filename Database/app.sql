@@ -1,6 +1,3 @@
-
-
-    
 CREATE DATABASE  IF NOT EXISTS `xtech`;
 USE `xtech`;
 
