@@ -1,1 +1,1 @@
-Learning git brnach startagies fetch command
+Learning git brnach startagies fetch command to merge
