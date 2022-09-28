@@ -1,1 +1,1 @@
-Learning git brnach startagies fetch command to merge abd tags and ssh keys and pull reqeust
+Learning git brnach startagies fetch command to merge abd tags and ssh keys and pull reqeust in git hub
