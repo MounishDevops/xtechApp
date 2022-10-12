@@ -1,7 +1,7 @@
 CREATE DATABASE  IF NOT EXISTS `xtech`;
 USE `xtech`;
 
-CREATE USER 'xtech@'localhost' IDENTIFIED BY 'xtech';
+CREATE USER 'xtech'@'localhost' IDENTIFIED BY 'xtech';
 GRANT ALL PRIVILEGES ON *.* TO 'xtech'@'localhost' WITH GRANT OPTION;
 CREATE USER 'xtech'@'%' IDENTIFIED BY 'xtech';
 GRANT ALL PRIVILEGES ON *.* TO 'xtech'@'%' WITH GRANT OPTION;
