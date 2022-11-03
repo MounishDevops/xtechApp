@@ -1,25 +1,50 @@
-#! usr/bin/env groovy
-
-import hudson.model.*
-import jenkins.model.Jenkins
-import org.jenkinsci.plugins.workflow.steps.FlowInterruptedException
-import hudson.AbortException
-import java.text.SimpleDateFormat
-
-node {
-   
-   stage("checkout"){    
-     git 'https://github.com/MounishDevops/xtechApp.git'
-    
-   }
-  
-  stage ("build"){
-       
-       sh """
-       export MVN_HOME=/opt/apache-maven-3.8.6
-       \$MVN_HOME/bin/mvn -version
-       """
-       
-   }
-    
+pipeline {
+    agent none
+    parameters {
+        choice(name: 'branch', choices: ['master', 'develop','bug'], description: 'Choose branch')
+    }
+    tools {
+        maven 'maven1'
+        jdk 'java8'
+    }
+    stages {
+        stage('Welcome Step') {
+            agent {
+                label 'NODE1'
+            }
+            steps { 
+                sh """
+                echo "hi this is jenkins class" >> test.txt
+                cat test.txt
+                echo "$JAVA_HOME"
+                """
+            }
+        }
+        stage('checkout'){
+             agent {
+                label 'NODE1'
+            }
+            steps{
+                checkout([$class: 'GitSCM', 
+                branches: [[name: "*/${params.branch}"]], 
+                extensions: [], 
+                userRemoteConfigs: [[url: 'https://github.com/MounishDevops/xtechApp.git']]])
+          
+                
+            }
+        }
+        stage('Compile'){
+             agent {
+                label 'NODE1'
+            }
+            steps{
+                
+               sh """
+              
+               mvn clean compile
+               """
+                
+            }
+        }
+    }
 }
