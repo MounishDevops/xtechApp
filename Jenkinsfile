@@ -1,8 +1,5 @@
 pipeline {
     agent none
-    parameters {
-        choice(name: 'branch', choices: ['master','bug'], description: 'Choose branch')
-    }
     tools {
         maven 'maven1'
         jdk 'java8'
@@ -26,7 +23,7 @@ pipeline {
             }
             steps{
                 checkout([$class: 'GitSCM', 
-                branches: [[name: "*/${params.branch}"]], 
+                branches: [[name: "*/develop"]], 
                 extensions: [], 
                 userRemoteConfigs: [[url: 'https://github.com/MounishDevops/xtechApp.git']]])
           
