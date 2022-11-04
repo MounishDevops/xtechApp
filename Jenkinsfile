@@ -23,7 +23,7 @@ pipeline {
             }
             steps{
                 checkout([$class: 'GitSCM', 
-                branches: [[name: "*/develop"]], 
+                branches: [[name: "*/master"]], 
                 extensions: [], 
                 userRemoteConfigs: [[url: 'https://github.com/MounishDevops/xtechApp.git']]])
           
