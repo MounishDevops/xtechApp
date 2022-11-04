@@ -1,7 +1,7 @@
 pipeline {
     agent none
     parameters {
-        choice(name: 'branch', choices: ['master', 'develop','bug'], description: 'Choose branch')
+        choice(name: 'branch', choices: ['master','bug'], description: 'Choose branch')
     }
     tools {
         maven 'maven1'
